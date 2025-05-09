@@ -1,7 +1,7 @@
 :root {
   --color1: rgb(36, 40, 52);
   --primary: #e83b00;
-
+  --headerheight: 150px;
 }
 
 * {
@@ -17,24 +17,52 @@
 body {
   background-color: rgb(18, 20, 24);
   font-family: "Manrope", sans-serif;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
 }
 
 
 .results {
-  width: 100%;
-  height: max-content;
-  margin-top: 140px;
+  width: 90%;
+  height: 100%;
+  margin: calc(var(--headerheight) + 20px) auto;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(6, 250px);
-  grid-template-rows: repeat(8, 200px);
-  overflow-y: auto;
-  gap: .55rem;
-  margin-bottom: 1.5rem;
-  position: absolute;
-  overflow-y: scroll;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  left:0;
+  right: 0;
+  padding:.4rem;
+  margin-bottom: 60px;
+
 }
+
+
+
+/** 
+ * This media query is for mobile devices
+ * It sets the grid to have 1 column
+ */
+@media screen and (min-width: 600px) {
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+}
+
+/** 
+ * This media query is for tablets
+ * It sets the grid to have 2 columns
+ */
+
+@media screen and (min-width: 1000px) {
+  .results {
+    grid-template-columns: repeat(4, 1fr);
+
+  }
+}
+
 
 
 
@@ -98,11 +126,12 @@ body {
 
 header {
   width: 100%;
-  height: 100px;
+  height: var(--headerheight);
   background-color: var(--color1);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   z-index: 9999;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -118,10 +147,7 @@ header .details .value {
 }
 
 
-.selector {
-  position: absolute;
-  left: 5%;
-}
+
 
 select,
 option {
@@ -144,6 +170,7 @@ button {
 
 .lensebox {
   background-color: #fff;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -208,7 +235,7 @@ button {
 
 .lensebox .icon {
   width: 40px;
-  height:40px;
+  height: 40px;
   background-image: url('./lense.png');
   background-repeat: no-repeat;
   background-size: contain;

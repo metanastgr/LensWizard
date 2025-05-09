@@ -4,7 +4,14 @@ function Header({ results, update, lensData, category, selected }) {
     return (
         <header>
 
-            <div className="selector">
+          
+            <div className="details">
+                <div className="title">{category ? category + ' Photography' : 'All Categories'}</div>
+                <div className="value">Found {results} lenses..</div>
+            </div>
+
+
+              <div className="selector">
                 <select value={selected} onChange={update}>
                     <option value="">All Categories</option>
                     {Object.keys(lensData.photography).map((category) => (
@@ -16,10 +23,6 @@ function Header({ results, update, lensData, category, selected }) {
             </div>
 
 
-            <div className="details">
-                <div className="title">{category ? category + ' Photography' : 'All Categories'}</div>
-                <div className="value">Found {results} lenses..</div>
-            </div>
         </header>
     )
 }
